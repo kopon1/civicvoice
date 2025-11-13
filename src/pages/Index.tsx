@@ -1,7 +1,8 @@
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Logo } from "@/components/Logo";
+import { useNavigate } from "react-router-dom";
 import { 
   MapPin, 
   AlertCircle, 
@@ -13,13 +14,12 @@ import {
   MessageSquare,
   BarChart3,
   Shield,
-  Megaphone,
   ArrowRight
 } from "lucide-react";
 import heroImage from "@/assets/hero-image.jpg";
 
 const Index = () => {
-  const [activeTab, setActiveTab] = useState("report");
+  const navigate = useNavigate();
 
   const stats = [
     { label: "Issues Reported", value: "2,847", icon: AlertCircle, color: "text-primary" },
@@ -72,21 +72,18 @@ const Index = () => {
       {/* Navigation */}
       <nav className="border-b bg-card/50 backdrop-blur-sm sticky top-0 z-50 shadow-sm">
         <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <Megaphone className="h-6 w-6 text-primary" />
-            <span className="text-xl font-bold text-foreground">CivicVoice</span>
-          </div>
+          <Logo />
           <div className="hidden md:flex items-center gap-6">
-            <a href="#report" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+            <button onClick={() => navigate("/report")} className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
               Report Issue
-            </a>
-            <a href="#dashboard" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+            </button>
+            <button onClick={() => navigate("/dashboard")} className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
               Dashboard
-            </a>
-            <a href="#about" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-              About
-            </a>
-            <Button variant="hero" size="sm">Get Started</Button>
+            </button>
+            <button onClick={() => navigate("/community")} className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+              Community
+            </button>
+            <Button variant="hero" size="sm" onClick={() => navigate("/report")}>Get Started</Button>
           </div>
         </div>
       </nav>
@@ -114,11 +111,11 @@ const Index = () => {
               Transforming civic engagement from frustration to empowerment.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button variant="hero" size="lg" className="text-lg">
+              <Button variant="hero" size="lg" className="text-lg" onClick={() => navigate("/report")}>
                 Report an Issue
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
-              <Button variant="outline" size="lg" className="bg-white/10 backdrop-blur-sm text-white border-white/30 hover:bg-white/20">
+              <Button variant="outline" size="lg" className="bg-white/10 backdrop-blur-sm text-white border-white/30 hover:bg-white/20" onClick={() => navigate("/dashboard")}>
                 View Dashboard
               </Button>
             </div>
@@ -269,7 +266,7 @@ const Index = () => {
                 Real-time transparency on local issues
               </p>
             </div>
-            <Button variant="outline">
+            <Button variant="outline" onClick={() => navigate("/issues")}>
               View All Issues
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
@@ -323,7 +320,7 @@ const Index = () => {
             Join thousands of citizens transforming their communities through transparent, 
             accountable civic engagement.
           </p>
-          <Button variant="hero" size="lg" className="bg-white text-primary hover:bg-white/90">
+          <Button variant="hero" size="lg" className="bg-white text-primary hover:bg-white/90" onClick={() => navigate("/report")}>
             Start Reporting Issues
             <ArrowRight className="ml-2 h-5 w-5" />
           </Button>
@@ -335,10 +332,7 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
-              <div className="flex items-center gap-2 mb-4">
-                <Megaphone className="h-5 w-5 text-primary" />
-                <span className="font-bold text-foreground">CivicVoice</span>
-              </div>
+              <Logo showText={true} className="mb-4" />
               <p className="text-sm text-muted-foreground">
                 Transforming civic engagement through transparency and accountability.
               </p>
@@ -347,9 +341,9 @@ const Index = () => {
             <div>
               <h4 className="font-semibold text-foreground mb-4">Platform</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><a href="#" className="hover:text-foreground transition-colors">Report Issue</a></li>
-                <li><a href="#" className="hover:text-foreground transition-colors">Dashboard</a></li>
-                <li><a href="#" className="hover:text-foreground transition-colors">Community</a></li>
+                <li><button onClick={() => navigate("/report")} className="hover:text-foreground transition-colors">Report Issue</button></li>
+                <li><button onClick={() => navigate("/dashboard")} className="hover:text-foreground transition-colors">Dashboard</button></li>
+                <li><button onClick={() => navigate("/community")} className="hover:text-foreground transition-colors">Community</button></li>
               </ul>
             </div>
             
