@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;600&family=Syne:wght@700;800&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -111,3 +112,36 @@ All colors MUST be HSL.
     @apply bg-background text-foreground;
   }
 }
+
+@layer base {
+  .cv-landing {
+    --cv-c1: 350 65% 23%;
+    --cv-c2: 38 70% 88%;
+    --cv-c3: 166 58% 28%;
+    --cv-font-display: 'Syne', ui-sans-serif, system-ui, sans-serif;
+    --cv-font-serif: 'Bodoni Moda', ui-serif, Georgia, serif;
+  }
+}
+
+@layer utilities {
+  .bg-cv-c1 { background-color: hsl(var(--cv-c1)); }
+  .bg-cv-c2 { background-color: hsl(var(--cv-c2)); }
+  .bg-cv-c3 { background-color: hsl(var(--cv-c3)); }
+  .text-cv-c1 { color: hsl(var(--cv-c1)); }
+  .text-cv-c2 { color: hsl(var(--cv-c2)); }
+  .text-cv-c3 { color: hsl(var(--cv-c3)); }
+  .font-display { font-family: var(--cv-font-display); }
+  .font-serif-cv { font-family: var(--cv-font-serif); }
+  .cv-shadow-soft { box-shadow: 0 10px 40px hsl(var(--cv-c1) / 0.15); }
+  .cv-shadow-bold { box-shadow: 0 20px 60px hsl(var(--cv-c1) / 0.25); }
+  .tilt { transform-style: preserve-3d; transition: transform 500ms cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 500ms cubic-bezier(0.2, 0.8, 0.2, 1); }
+  .tilt:hover { transform: perspective(1000px) rotateX(3deg) rotateY(-3deg) translateZ(2px); }
+  .squish { transition: transform 200ms cubic-bezier(0.2, 0.8, 0.2, 1); }
+  .squish:active { transform: translateY(1px) scaleY(0.92); }
+  .cv-diagonal { background: repeating-linear-gradient(-60deg, transparent 0 18px, hsl(var(--cv-c1) / 0.12) 18px 22px); }
+  .cv-diagonal-strong { background: repeating-linear-gradient(-60deg, transparent 0 12px, hsl(var(--cv-c1) / 0.2) 12px 16px); }
+}
+
+.cv-cursor { position: fixed; width: 8px; height: 8px; border-radius: 9999px; background: hsl(var(--cv-c3)); pointer-events: none; z-index: 50; transform: translate(-50%, -50%); transition: transform 200ms cubic-bezier(0.2, 0.8, 0.2, 1), background-color 200ms; }
+.cv-cursor.cv-hover { transform: translate(-50%, -50%) scale(2.2); background: hsl(var(--cv-c1)); }
+.cv-cursor.cv-down { transform: translate(-50%, -50%) scale(0.6); }
