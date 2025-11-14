@@ -1,9 +1,8 @@
-import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Logo } from "@/components/Logo";
+import CVLayout from "@/components/CVLayout";
 import { ArrowRight, MapPin, Clock } from "lucide-react";
 
 const liveIssues = [
@@ -25,56 +24,9 @@ const mapDots = [
 export default function Landing() {
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const el = document.createElement("div");
-    el.className = "cv-cursor";
-    document.body.appendChild(el);
-    const move = (e: MouseEvent) => {
-      el.style.left = e.clientX + "px";
-      el.style.top = e.clientY + "px";
-    };
-    const over = (e: MouseEvent) => {
-      const t = e.target as HTMLElement;
-      if (t.closest(".cv-hoverable")) el.classList.add("cv-hover");
-    };
-    const out = (e: MouseEvent) => {
-      const t = e.target as HTMLElement;
-      if (t.closest(".cv-hoverable")) el.classList.remove("cv-hover");
-    };
-    const down = () => el.classList.add("cv-down");
-    const up = () => el.classList.remove("cv-down");
-    window.addEventListener("mousemove", move);
-    window.addEventListener("mouseover", over);
-    window.addEventListener("mouseout", out);
-    window.addEventListener("mousedown", down);
-    window.addEventListener("mouseup", up);
-    return () => {
-      window.removeEventListener("mousemove", move);
-      window.removeEventListener("mouseover", over);
-      window.removeEventListener("mouseout", out);
-      window.removeEventListener("mousedown", down);
-      window.removeEventListener("mouseup", up);
-      document.body.removeChild(el);
-    };
-  }, []);
-
   return (
-    <div className="cv-landing min-h-screen bg-cv-c2 text-cv-c1">
-      <aside className="fixed left-0 top-0 h-screen border-r border-[hsl(var(--cv-c1)/0.18)] bg-[hsl(var(--cv-c2))] w-20 md:w-56 px-4 py-6 flex flex-col gap-8">
-        <div className="flex items-center justify-center md:justify-start">
-          <Logo />
-        </div>
-        <nav className="mt-2 text-sm tracking-wide">
-          <ul className="flex flex-col gap-4">
-            <li><a href="#report" className="cv-hoverable flex items-center gap-3 font-display"><span className="hidden md:inline text-[hsl(var(--cv-c1)/0.5)]">01</span><span>Report</span></a></li>
-            <li><a href="#stories" className="cv-hoverable flex items-center gap-3 font-display"><span className="hidden md:inline text-[hsl(var(--cv-c1)/0.5)]">02</span><span>Stories</span></a></li>
-            <li><a href="#live" className="cv-hoverable flex items-center gap-3 font-display"><span className="hidden md:inline text-[hsl(var(--cv-c1)/0.5)]">03</span><span>Live</span></a></li>
-            <li><a href="#map" className="cv-hoverable flex items-center gap-3 font-display"><span className="hidden md:inline text-[hsl(var(--cv-c1)/0.5)]">04</span><span>Map</span></a></li>
-          </ul>
-        </nav>
-      </aside>
-
-      <main className="ml-20 md:ml-56">
+    <CVLayout>
+      <main className="cv-landing">
         <section id="report" className="relative overflow-hidden">
           <div className="mx-auto px-6 md:px-12 pt-16 md:pt-24 pb-20">
             <div className="max-w-[1100px] ml-auto">
@@ -179,6 +131,6 @@ export default function Landing() {
           </div>
         </section>
       </main>
-    </div>
+    </CVLayout>
   );
 }

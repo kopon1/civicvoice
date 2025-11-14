@@ -1,4 +1,4 @@
-import { Logo } from "@/components/Logo";
+import CVLayout from "@/components/CVLayout";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -35,24 +35,10 @@ const Community = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-background">
-      <nav className="border-b bg-card/50 backdrop-blur-sm sticky top-0 z-50">
-        <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-          <Logo />
-          <div className="flex items-center gap-4">
-            <Button variant="outline" onClick={() => navigate("/dashboard")}>
-              Dashboard
-            </Button>
-            <Button variant="hero" onClick={() => navigate("/report")}>
-              Report Issue
-            </Button>
-          </div>
-        </div>
-      </nav>
-
+    <CVLayout>
       <div className="container mx-auto px-4 py-12">
         <div className="mb-8">
-          <h1 className="text-4xl font-bold text-foreground mb-2">Community Leaderboard</h1>
+          <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-2">Community Leaderboard</h1>
           <p className="text-lg text-muted-foreground">
             Recognizing our most active civic participants
           </p>
@@ -60,10 +46,10 @@ const Community = () => {
 
         <div className="grid lg:grid-cols-3 gap-8 mb-12">
           <div className="lg:col-span-2">
-            <Card className="p-6">
+            <Card className="p-6 tilt hover:cv-shadow-bold transition-shadow">
               <div className="flex items-center gap-2 mb-6">
                 <Trophy className="h-6 w-6 text-accent" />
-                <h2 className="text-2xl font-bold text-foreground">Top Contributors</h2>
+                <h2 className="font-display text-2xl font-bold text-foreground">Top Contributors</h2>
               </div>
 
               <div className="space-y-4">
@@ -126,7 +112,7 @@ const Community = () => {
           </div>
 
           <div>
-            <Card className="p-6 mb-6">
+            <Card className="p-6 mb-6 tilt hover:cv-shadow-bold transition-shadow">
               <div className="text-center mb-4">
                 <div className="w-20 h-20 rounded-full bg-gradient-hero flex items-center justify-center mx-auto mb-4">
                   <span className="text-3xl font-bold text-white">12</span>
@@ -150,12 +136,12 @@ const Community = () => {
                 </div>
               </div>
 
-              <Button variant="hero" className="w-full mt-6" onClick={() => navigate("/report")}>
+              <Button variant="hero" className="w-full mt-6 squish" onClick={() => navigate("/report")}>
                 Improve Your Rank
               </Button>
             </Card>
 
-            <Card className="p-6 bg-gradient-success text-white">
+            <Card className="p-6 bg-gradient-success text-white tilt hover:cv-shadow-bold transition-shadow">
               <h3 className="text-xl font-bold mb-2">Your Community Impact</h3>
               <p className="text-white/90 text-sm mb-4">
                 You've helped resolve 15 issues, making your neighborhood safer and cleaner!
@@ -168,10 +154,10 @@ const Community = () => {
           </div>
         </div>
 
-        <Card className="p-6">
+        <Card className="p-6 tilt hover:cv-shadow-bold transition-shadow">
           <div className="flex items-center gap-2 mb-6">
             <Award className="h-6 w-6 text-primary" />
-            <h2 className="text-2xl font-bold text-foreground">Achievement Badges</h2>
+            <h2 className="font-display text-2xl font-bold text-foreground">Achievement Badges</h2>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
@@ -196,7 +182,7 @@ const Community = () => {
           </div>
         </Card>
       </div>
-    </div>
+    </CVLayout>
   );
 };
 

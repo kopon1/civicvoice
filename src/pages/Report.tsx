@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Logo } from "@/components/Logo";
+import CVLayout from "@/components/CVLayout";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -59,26 +59,17 @@ const Report = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
-      <nav className="border-b bg-card/50 backdrop-blur-sm sticky top-0 z-50">
-        <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-          <Logo />
-          <Button variant="outline" onClick={() => navigate("/")}>
-            Back to Home
-          </Button>
-        </div>
-      </nav>
-
+    <CVLayout>
       <div className="container mx-auto px-4 py-12">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-8">
-            <h1 className="text-4xl font-bold text-foreground mb-4">Report an Issue</h1>
+            <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">Report an Issue</h1>
             <p className="text-lg text-muted-foreground">
               Help make your community better. Your report will be tracked in real-time.
             </p>
           </div>
 
-          <Card className="p-8">
+          <Card className="p-8 hover:cv-shadow-bold transition-shadow">
             <form onSubmit={handleSubmit} className="space-y-8">
               <div>
                 <Label className="text-base font-semibold mb-4 block">
@@ -114,7 +105,7 @@ const Report = () => {
                   placeholder="Brief description of the issue"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
-                  className="mt-2"
+                  className="mt-2 squish"
                 />
               </div>
 
@@ -143,7 +134,7 @@ const Report = () => {
                     onChange={(e) => setLocation(e.target.value)}
                     className="flex-1"
                   />
-                  <Button type="button" variant="outline" onClick={handleGetLocation}>
+                  <Button type="button" variant="outline" onClick={handleGetLocation} className="squish">
                     <MapPin className="h-4 w-4 mr-2" />
                     Use GPS
                   </Button>
@@ -162,11 +153,11 @@ const Report = () => {
               </div>
 
               <div className="flex gap-4 pt-4">
-                <Button type="submit" variant="hero" className="flex-1">
+                <Button type="submit" variant="hero" className="flex-1 squish">
                   <CheckCircle2 className="h-5 w-5 mr-2" />
                   Submit Report
                 </Button>
-                <Button type="button" variant="outline" onClick={() => navigate("/")}>
+                <Button type="button" variant="outline" onClick={() => navigate("/")} className="squish">
                   Cancel
                 </Button>
               </div>
@@ -182,7 +173,7 @@ const Report = () => {
           </div>
         </div>
       </div>
-    </div>
+    </CVLayout>
   );
 };
 

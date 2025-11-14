@@ -1,10 +1,9 @@
 import { useState } from "react";
-import { Logo } from "@/components/Logo";
+import CVLayout from "@/components/CVLayout";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
-import { useNavigate } from "react-router-dom";
 import {
   MapPin,
   Clock,
@@ -86,7 +85,6 @@ const mockIssues = [
 ];
 
 const Issues = () => {
-  const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
   const [statusFilter, setStatusFilter] = useState("All");
 
@@ -98,24 +96,10 @@ const Issues = () => {
   });
 
   return (
-    <div className="min-h-screen bg-background">
-      <nav className="border-b bg-card/50 backdrop-blur-sm sticky top-0 z-50">
-        <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-          <Logo />
-          <div className="flex items-center gap-4">
-            <Button variant="outline" onClick={() => navigate("/dashboard")}>
-              Dashboard
-            </Button>
-            <Button variant="hero" onClick={() => navigate("/report")}>
-              Report Issue
-            </Button>
-          </div>
-        </div>
-      </nav>
-
+    <CVLayout>
       <div className="container mx-auto px-4 py-12">
         <div className="mb-8">
-          <h1 className="text-4xl font-bold text-foreground mb-2">Community Issues</h1>
+          <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-2">Community Issues</h1>
           <p className="text-lg text-muted-foreground">
             Track all reported issues in real-time
           </p>
@@ -138,6 +122,7 @@ const Issues = () => {
                 variant={statusFilter === status ? "default" : "outline"}
                 onClick={() => setStatusFilter(status)}
                 size="sm"
+                className="squish"
               >
                 {status}
               </Button>
@@ -147,7 +132,7 @@ const Issues = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredIssues.map((issue) => (
-            <Card key={issue.id} className="overflow-hidden hover:shadow-lg transition-all cursor-pointer">
+            <Card key={issue.id} className="overflow-hidden tilt hover:cv-shadow-bold transition-shadow cursor-pointer">
               <div className="p-6">
                 <div className="flex items-start justify-between mb-4">
                   <Badge variant="outline" className="text-xs">
@@ -187,7 +172,7 @@ const Issues = () => {
               </div>
 
               <div className="px-6 py-3 bg-muted/50 border-t flex items-center justify-between">
-                <button className="text-sm font-medium text-primary hover:text-primary/80 transition-colors">
+                <button className="text-sm font-medium text-primary hover:text-primary/80 transition-colors cv-hoverable squish">
                   View Details →
                 </button>
                 <TrendingUp className="h-4 w-4 text-muted-foreground" />
@@ -197,14 +182,14 @@ const Issues = () => {
         </div>
 
         {filteredIssues.length === 0 && (
-          <Card className="p-12 text-center">
+          <Card className="p-12 text-center tilt hover:cv-shadow-bold transition-shadow">
             <CheckCircle2 className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
             <h3 className="text-xl font-bold text-foreground mb-2">No issues found</h3>
             <p className="text-muted-foreground">Try adjusting your search or filters</p>
           </Card>
         )}
       </div>
-    </div>
+    </CVLayout>
   );
 };
 

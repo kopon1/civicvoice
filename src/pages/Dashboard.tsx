@@ -1,4 +1,4 @@
-import { Logo } from "@/components/Logo";
+import CVLayout from "@/components/CVLayout";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { useNavigate } from "react-router-dom";
@@ -38,24 +38,10 @@ const Dashboard = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
-      <nav className="border-b bg-card/50 backdrop-blur-sm sticky top-0 z-50">
-        <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-          <Logo />
-          <div className="flex items-center gap-4">
-            <Button variant="outline" onClick={() => navigate("/issues")}>
-              View All Issues
-            </Button>
-            <Button variant="hero" onClick={() => navigate("/report")}>
-              Report Issue
-            </Button>
-          </div>
-        </div>
-      </nav>
-
+    <CVLayout>
       <div className="container mx-auto px-4 py-12">
         <div className="mb-8">
-          <h1 className="text-4xl font-bold text-foreground mb-2">Community Dashboard</h1>
+          <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-2">Community Dashboard</h1>
           <p className="text-lg text-muted-foreground">
             Real-time transparency and accountability metrics
           </p>
@@ -63,7 +49,7 @@ const Dashboard = () => {
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
           {stats.map((stat, index) => (
-            <Card key={index} className="p-6 hover:shadow-lg transition-shadow">
+            <Card key={index} className="p-6 tilt hover:cv-shadow-bold transition-shadow">
               <div className="flex items-center justify-between mb-2">
                 <stat.icon className={`h-8 w-8 ${stat.color}`} />
                 <div className={`text-xs font-semibold px-2 py-1 rounded ${
@@ -81,10 +67,10 @@ const Dashboard = () => {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-8 mb-12">
-          <Card className="p-6">
+          <Card className="p-6 tilt hover:cv-shadow-bold transition-shadow">
             <div className="flex items-center gap-2 mb-6">
               <MapPin className="h-5 w-5 text-primary" />
-              <h2 className="text-2xl font-bold text-foreground">Neighborhood Performance</h2>
+              <h2 className="font-display text-2xl font-bold text-foreground">Neighborhood Performance</h2>
             </div>
             <div className="space-y-4">
               {neighborhoods.map((neighborhood) => (
@@ -121,10 +107,10 @@ const Dashboard = () => {
             </div>
           </Card>
 
-          <Card className="p-6">
+          <Card className="p-6 tilt hover:cv-shadow-bold transition-shadow">
             <div className="flex items-center gap-2 mb-6">
               <BarChart3 className="h-5 w-5 text-primary" />
-              <h2 className="text-2xl font-bold text-foreground">Department Efficiency</h2>
+              <h2 className="font-display text-2xl font-bold text-foreground">Department Efficiency</h2>
             </div>
             <div className="space-y-4">
               {departmentPerformance.map((dept) => (
@@ -158,19 +144,19 @@ const Dashboard = () => {
           </Card>
         </div>
 
-        <Card className="p-8 bg-gradient-hero text-white">
+        <Card className="p-8 bg-gradient-hero text-white tilt hover:cv-shadow-bold transition-shadow">
           <div className="text-center">
             <h2 className="text-3xl font-bold mb-4">Your Impact Matters</h2>
             <p className="text-lg mb-6 text-white/90">
               Every report helps build a better community. Join thousands of citizens making a difference.
             </p>
-            <Button variant="hero" size="lg" onClick={() => navigate("/report")} className="bg-white text-primary hover:bg-white/90">
+            <Button variant="hero" size="lg" onClick={() => navigate("/report")} className="bg-white text-primary hover:bg-white/90 squish">
               Report Your First Issue
             </Button>
           </div>
         </Card>
       </div>
-    </div>
+    </CVLayout>
   );
 };
 

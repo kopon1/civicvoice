@@ -120,6 +120,32 @@ All colors MUST be HSL.
     --cv-c3: 166 58% 28%;
     --cv-font-display: 'Syne', ui-sans-serif, system-ui, sans-serif;
     --cv-font-serif: 'Bodoni Moda', ui-serif, Georgia, serif;
+    --gradient-hero: linear-gradient(135deg, hsl(var(--cv-c1)) 0%, hsl(var(--cv-c3)) 100%);
+  }
+  .cv-theme {
+    --background: var(--cv-c2);
+    --foreground: var(--cv-c1);
+    --card: var(--cv-c2);
+    --card-foreground: var(--cv-c1);
+    --popover: var(--cv-c2);
+    --popover-foreground: var(--cv-c1);
+    --primary: var(--cv-c3);
+    --primary-foreground: var(--cv-c2);
+    --primary-light: var(--cv-c2);
+    --secondary: var(--cv-c1);
+    --secondary-foreground: var(--cv-c2);
+    --secondary-light: var(--cv-c2);
+    --accent: var(--cv-c1);
+    --accent-foreground: var(--cv-c2);
+    --accent-light: var(--cv-c2);
+    --muted: var(--cv-c2);
+    --muted-foreground: 350 40% 24%;
+    --destructive: var(--cv-c1);
+    --destructive-foreground: var(--cv-c2);
+    --border: 350 30% 72%;
+    --input: 350 30% 72%;
+    --ring: var(--cv-c3);
+    --gradient-success: linear-gradient(135deg, hsl(var(--cv-c3)) 0%, hsl(var(--cv-c1)) 100%);
   }
 }
 
@@ -142,6 +168,6 @@ All colors MUST be HSL.
   .cv-diagonal-strong { background: repeating-linear-gradient(-60deg, transparent 0 12px, hsl(var(--cv-c1) / 0.2) 12px 16px); }
 }
 
-.cv-cursor { position: fixed; width: 8px; height: 8px; border-radius: 9999px; background: hsl(var(--cv-c3)); pointer-events: none; z-index: 50; transform: translate(-50%, -50%); transition: transform 200ms cubic-bezier(0.2, 0.8, 0.2, 1), background-color 200ms; }
-.cv-cursor.cv-hover { transform: translate(-50%, -50%) scale(2.2); background: hsl(var(--cv-c1)); }
+.cv-cursor { position: fixed; width: 8px; height: 8px; border-radius: 9999px; background: hsl(var(--primary)); pointer-events: none; z-index: 50; transform: translate(-50%, -50%); transition: transform 200ms cubic-bezier(0.2, 0.8, 0.2, 1), background-color 200ms; }
+.cv-cursor.cv-hover { transform: translate(-50%, -50%) scale(2.2); background: hsl(var(--accent)); }
 .cv-cursor.cv-down { transform: translate(-50%, -50%) scale(0.6); }
